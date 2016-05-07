@@ -2,6 +2,6 @@
 Truco, a card game in Java
 
 ## Authors
-Bruno Vedovetto @bleandro  
+Bruno Vedoveto Leandro @bleandro  
 Dalton Lima @daltonbr  
 Lucas Pinheiro @lucaspin  
