@@ -25,8 +25,8 @@
             <file leaf-file-name="Card.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/beans/Card.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="633">
-                    <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+                  <state relative-caret-position="708">
+                    <caret line="74" column="88" selection-start-line="74" selection-start-column="88" selection-end-line="74" selection-end-column="88" />
                     <folding>
                       <element signature="e#770#771#0" expanded="true" />
                       <element signature="e#850#851#0" expanded="true" />
@@ -49,8 +49,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+            <state relative-caret-position="180">
+              <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -113,8 +113,8 @@
         <option value="$PROJECT_DIR$/src/test/CardTest.java" />
         <option value="$PROJECT_DIR$/src/beans/Rank.java" />
         <option value="$PROJECT_DIR$/src/beans/Suit.java" />
-        <option value="$PROJECT_DIR$/src/beans/Card.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/beans/Card.java" />
       </list>
     </option>
   </component>
@@ -666,12 +666,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1462656426738</updated>
-      <workItem from="1464786894743" duration="4274000" />
+      <workItem from="1464786894743" duration="4546000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4274000" />
+    <option name="totallyTimeSpent" value="4546000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="709" extended-state="6" />
@@ -861,8 +861,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/beans/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="708">
+          <caret line="74" column="88" selection-start-line="74" selection-start-column="88" selection-end-line="74" selection-end-column="88" />
           <folding>
             <element signature="e#770#771#0" expanded="true" />
             <element signature="e#850#851#0" expanded="true" />
@@ -872,8 +872,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
+        <state relative-caret-position="180">
+          <caret line="61" column="9" selection-start-line="61" selection-start-column="9" selection-end-line="61" selection-end-column="9" />
           <folding />
         </state>
       </provider>

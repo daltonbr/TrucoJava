@@ -72,11 +72,7 @@ public class Card implements Comparable<Card> {
 
         //final Card thisCard = (Card) this;
         final Card anotherCard = (Card) obj;
-        if (!this.isStrongerThan(anotherCard) && (!anotherCard.isStrongerThan(this))) {
-            return true;
-        } else {
-            return false;
-        }
+        return (!this.isStrongerThan(anotherCard) && !anotherCard.isStrongerThan(this));
     }
 
     @Override
