@@ -11,10 +11,10 @@ public enum Suit {
     @Override
     public String toString(){
         switch (this){
-            case Diamonds: return "♦";
-            case Spades: return "♠";
-            case Hearths: return "♥";
-            case Clubs: return "♣";
+            case Diamonds: return "d";
+            case Spades: return "s";
+            case Hearths: return "h";
+            case Clubs: return "c";
         }
 
         return "ERROR";

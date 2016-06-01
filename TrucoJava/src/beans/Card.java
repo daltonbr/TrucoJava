@@ -40,7 +40,7 @@ public class Card implements Comparable<Card> {
 
     @Override
     public String toString(){
-        return getRank().toString() + getSuit().toString();
+        return getRank().toString() + getSuit().toString() + isManilha();
     }
 
     public boolean isStrongerThan(Card _anotherCard){
@@ -59,6 +59,24 @@ public class Card implements Comparable<Card> {
         //If the code gets here, None of the cards are Manilha
         //So I just compare their ranks
         return (this.getRank().compareTo(_anotherCard.getRank()) > 0);
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (obj == null) {
+            return false;
+        }
+        if (!Card.class.isAssignableFrom(obj.getClass())) {
+            return false;
+        }
+
+        //final Card thisCard = (Card) this;
+        final Card anotherCard = (Card) obj;
+        if (!this.isStrongerThan(anotherCard) && (!anotherCard.isStrongerThan(this))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
