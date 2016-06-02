@@ -1,6 +1,7 @@
 import beans.Card;
 import beans.Rank;
 import beans.Suit;
+import beans.Deck;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,35 +11,22 @@ import java.util.Collections;
  */
 public class Main {
     public static void main(String args[]) {
-        ArrayList<Card> deck = new ArrayList<>();
+        Deck testDeck = new Deck();
+        testDeck.shuffleDeck();
 
-        Card vira = new Card(Rank.Jacks, Suit.Clubs, false);
-
-        //Create new cards
-        for (Rank rank : Rank.values()) {
-            for (Suit suit : Suit.values()) {
-                Card card = new Card(rank, suit, (vira.getRank() == Rank.Three && rank == Rank.Four) ||
-                        (rank.ordinal() == vira.getRank().ordinal() + 1));
-                deck.add(card);
-            }
-        }
-
-        Collections.shuffle(deck);
-
-        //Print not sorted
-        System.out.println(deck);
+        //Drawing and setting the manilha (maybe a method to do this?)
+        Card vira = testDeck.drawCard();
+        vira.setManilha(true);
+        System.out.println("The choosen manilha is: " + vira.toString());
 
         System.out.println();
-        System.out.println();
-
-        //Sort
-        deck.sort(null);
-
-        //Print sorted
-        System.out.println(deck);
-
-        System.out.println();
-        System.out.println();
+//        //Sort
+//        deck.sort(null);
+//
+//        //Print sorted
+//        System.out.println(deck);
+//
+//        System.out.println();
 
         Card card1 = new Card(Rank.Three, Suit.Diamonds, false);
         Card card2 = new Card(Rank.Three, Suit.Spades, false);
@@ -61,7 +49,7 @@ public class Main {
             System.out.println("Card2 and Card3 are Equivalent!");
         }
 
-        // When comparing for cards that are equivalent (equals in context of the game)
+        // When comparing{984ca8a9-5383-42a7-a38b-8f90dee91056} for cards that are equivalent (equals in context of the game)
         // These way of compare is not good;
         if (card2.isStrongerThan(card1))
             System.out.println("1st ERRO - Card2 is Stronger!");
