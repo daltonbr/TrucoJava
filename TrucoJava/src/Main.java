@@ -13,14 +13,13 @@ public class Main {
         testDeck.shuffleDeck();
 
         //add 3 cards
-        testHand.addCard(testDeck.getTopCard());
-        testHand.addCard(testDeck.getTopCard());
-        testHand.addCard(testDeck.getTopCard());
-
+        testHand.addCard(testDeck.drawTopCard());
+        testHand.addCard(testDeck.drawTopCard());
+        testHand.addCard(testDeck.drawTopCard());
         testHand.showHand();
 
         //Drawing and setting the manilha (maybe a method to do this?)
-        Card vira = testDeck.getTopCard();
+        Card vira = testDeck.drawTopCard();
         vira.setManilha(true);
         System.out.println("The choosen manilha is: " + vira.toString());
 

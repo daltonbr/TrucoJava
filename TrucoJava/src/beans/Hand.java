@@ -10,31 +10,38 @@ import java.util.ArrayList;
  */
 
 public class Hand {
-    private ArrayList<Card> hand;
+    private ArrayList<Card> cards;
 
     public Hand() {
-        hand = new ArrayList<>();
+        cards = new ArrayList<>();
     }
 
     public void addCard(Card _card) {
         if (_card != null)
-            hand.add(_card);
+            cards.add(_card);
+    }
+
+    public Card drawCard(int _index) throws IndexOutOfBoundsException {
+        Card card = this.cards.get(_index);
+        cards.remove(_index);
+        return card;
     }
 
     public void showHand() {
-        for(int i = 0; i < hand.size(); i++){
-            System.out.println(hand.get(i));
+        for(int i = 0; i < cards.size(); i++) {
+            System.out.println(cards.get(i));
         }
-
     }
+
     public int getHandSize() {
-        return hand.size();
+        return cards.size();
     }
 
-    public Card getCard(int _position) {
-        if (_position >= 0 && _position < hand.size())
-            return (Card)hand.get(_position);
-        else
-            return null;
+    public Card getCard(int _position) throws IndexOutOfBoundsException {
+        return cards.get(_position);
+    }
+
+    public void resetHand() {
+        this.cards.clear();
     }
 }
