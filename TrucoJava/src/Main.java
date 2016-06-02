@@ -1,7 +1,4 @@
-import beans.Card;
-import beans.Rank;
-import beans.Suit;
-import beans.Deck;
+import beans.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,10 +9,18 @@ import java.util.Collections;
 public class Main {
     public static void main(String args[]) {
         Deck testDeck = new Deck();
+        Hand testHand = new Hand();
         testDeck.shuffleDeck();
 
+        //add 3 cards
+        testHand.addCard(testDeck.getTopCard());
+        testHand.addCard(testDeck.getTopCard());
+        testHand.addCard(testDeck.getTopCard());
+
+        testHand.showHand();
+
         //Drawing and setting the manilha (maybe a method to do this?)
-        Card vira = testDeck.drawCard();
+        Card vira = testDeck.getTopCard();
         vira.setManilha(true);
         System.out.println("The choosen manilha is: " + vira.toString());
 
