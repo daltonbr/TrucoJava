@@ -43,7 +43,7 @@ TrucoJava/.idea/mongoSettings.xml
 ## Plugin-specific files:
 
 # IntelliJ
-/out/
+TrucoJava/out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
