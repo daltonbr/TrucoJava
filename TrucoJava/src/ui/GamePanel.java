@@ -2,7 +2,6 @@ package ui;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
 /**
  * Class for the main panel of the application.

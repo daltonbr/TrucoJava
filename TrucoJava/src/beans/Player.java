@@ -1,10 +1,10 @@
 package beans;
 
 /**
- * Created on 6/1/16 by:
- * Dalton Lima         github.com/daltonbr
- * Lucas Pinheiro      github.com/lucaspin
- * Bruno Vedovetto     github.com/bleandro
+ * Class to represent a player of the game.
+ * @author lucas Pinheiro @lucaspin
+ * @author Dalton Lima @daltonbr
+ * @author Bruno Vedovetto @bleandro
  */
 public class Player {
     private String name;

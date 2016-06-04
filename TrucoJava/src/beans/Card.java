@@ -1,7 +1,10 @@
 package beans;
 
 /**
- * Created by Bruno on 07/05/2016.
+ * Class to represent one card of the game.
+ * @author Dalton Lima @daltonbr
+ * @author Bruno Vedovetto @bleandro
+ * @author lucas Pinheiro @lucaspin
  */
 public class Card implements Comparable<Card> {
     private Suit suit;
@@ -40,7 +43,7 @@ public class Card implements Comparable<Card> {
 
     @Override
     public String toString(){
-        return getRank().toString() + getSuit().toString() + isManilha();
+        return getRank().getValue() + getSuit().getValue() + isManilha();
     }
 
     public boolean isStrongerThan(Card _anotherCard){

@@ -1,22 +1,24 @@
 package beans;
 
-import org.jetbrains.annotations.Contract;
-
 /**
- * Created by Bruno on 07/05/2016.
+ * Enum to hold the suit values for a card.
+ * @author lucas Pinheiro @lucaspin
+ * @author Dalton Lima @daltonbr
+ * @author Bruno Vedovetto @bleandro
  */
 public enum Suit {
-    Diamonds, Spades, Hearths, Clubs;
+    DIAMONDS("D"),
+    SPADES("S"),
+    HEARTS("H"),
+    CLUBS("C");
 
-    @Override
-    public String toString(){
-        switch (this){
-            case Diamonds: return "d";
-            case Spades: return "s";
-            case Hearths: return "h";
-            case Clubs: return "c";
-        }
+    private String value;
 
-        return "ERROR";
+    Suit(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return this.value;
     }
 }

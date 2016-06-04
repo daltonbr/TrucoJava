@@ -1,26 +1,30 @@
 package beans;
 
 /**
- * Created by Bruno on 07/05/2016.
+ * Enum to hold the rank values for a card.
+ * @author lucas Pinheiro @lucaspin
+ * @author Dalton Lima @daltonbr
+ * @author Bruno Vedovetto @bleandro
  */
 public enum Rank {
-    Four, Five, Six, Seven, Queen, Jack, King, Ace, Two, Three;
+    Four("4"),
+    Five("5"),
+    Six("6"),
+    Seven("7"),
+    Queen("Q"),
+    Jack("J"),
+    King("K"),
+    Ace("A"),
+    Two("2"),
+    Three("3");
 
-    @Override
-    public String toString() {
-        switch (this){
-            case Four: return "4";
-            case Five: return "5";
-            case Six: return "6";
-            case Seven: return "7";
-            case Queen: return "Q";
-            case Jack: return "J";
-            case King: return "K";
-            case Ace: return "A";
-            case Two: return "2";
-            case Three: return "3";
-        }
+    private String value;
 
-        return "ERROR";
+    Rank(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return this.value;
     }
 }

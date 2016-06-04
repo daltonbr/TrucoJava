@@ -5,18 +5,17 @@ import java.util.Collections;
 import java.util.Random;
 
 /**
- * Created on 6/1/16 by:
- * Dalton Lima         github.com/daltonbr
- * Lucas Pinheiro      github.com/lucaspin
- * Bruno Vedovetto     github.com/bleandro
+ * Class to represent the deck of cards of the game.
+ * @author Dalton Lima @daltonbr
+ * @author Bruno Vedovetto @bleandro
+ * @author lucas Pinheiro @lucaspin
  */
-
 public class Deck {
     private ArrayList<Card> cards;
     private Random randomGenerator = new Random();
 
     public Deck() {
-        cards = new ArrayList<Card>();
+        cards = new ArrayList<>();
         //Create new cards
         for (Rank rank : Rank.values()) {
             for (Suit suit : Suit.values()) {

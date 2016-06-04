@@ -3,12 +3,11 @@ package beans;
 import java.util.ArrayList;
 
 /**
- * Created on 6/1/16 by:
- * Dalton Lima         github.com/daltonbr
- * Lucas Pinheiro      github.com/lucaspin
- * Bruno Vedovetto     github.com/bleandro
+ * Class to represent a player's hand.
+ * @author Dalton Lima @daltonbr
+ * @author lucas Pinheiro @lucaspin
+ * @author Bruno Vedovetto @bleandro
  */
-
 public class Hand {
     private ArrayList<Card> cards;
 

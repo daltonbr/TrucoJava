@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3dcb674c-44b9-4f85-bd74-065412cc62a0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/TrucoJava/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrucoJava/beans/Player.class" afterPath="$PROJECT_DIR$/out/production/TrucoJava/beans/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrucoJava/beans/Rank$1.class" afterPath="$PROJECT_DIR$/out/production/TrucoJava/beans/Rank$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrucoJava/beans/Rank.class" afterPath="$PROJECT_DIR$/out/production/TrucoJava/beans/Rank.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrucoJava/beans/Suit$1.class" afterPath="$PROJECT_DIR$/out/production/TrucoJava/beans/Suit$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TrucoJava/beans/Suit.class" afterPath="$PROJECT_DIR$/out/production/TrucoJava/beans/Suit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/GamePanel.java" afterPath="$PROJECT_DIR$/src/ui/GamePanel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/MainView.java" afterPath="$PROJECT_DIR$/src/ui/MainView.java" />
     </list>
     <ignored path="Test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,8 +29,8 @@
       <file leaf-file-name="MainView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/MainView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+            <state relative-caret-position="437">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -45,8 +39,8 @@
       <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ui/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+            <state relative-caret-position="345">
+              <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -698,12 +692,12 @@
       <updated>1462656426738</updated>
       <workItem from="1464786894743" duration="4884000" />
       <workItem from="1464821669192" duration="9539000" />
-      <workItem from="1464995012208" duration="8579000" />
+      <workItem from="1464995012208" duration="9107000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23002000" />
+    <option name="totallyTimeSpent" value="23530000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="761" extended-state="0" />
@@ -1098,21 +1092,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/GamePanel.java">
+    <entry file="file://$PROJECT_DIR$/src/ui/MainView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="437">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/MainView.java">
+    <entry file="file://$PROJECT_DIR$/src/ui/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-          <folding />
+        <state relative-caret-position="345">
+          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

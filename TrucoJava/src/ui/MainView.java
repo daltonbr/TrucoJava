@@ -35,7 +35,7 @@ public class MainView extends JFrame {
      */
     private void initMainViewOpts() {
         this.setSize(MainView.MINIMUM_WIDTH, MainView.MINIMUM_HEIGHT);
-//        this.setResizable(false);
+        this.setResizable(false);
 
         // Center the frame
         this.setLocationRelativeTo(null);
