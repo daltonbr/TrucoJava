@@ -21,15 +21,15 @@ public class Point {
      * Constructor of the class
      */
     public Point(List<Player> playersInOrder) {
-        // We must pass down the players in the order they are going to play
-        // TODO: think how to organize the round creation
-        // Round round1 = new Round(playersInOrder);
-
         this.setDealer(playersInOrder.get(0));
         this.setPointValue(PointValue.ONE);
         this.initPoint(playersInOrder);
     }
 
+    /**
+     * Init a point flow
+     * @param playersInOrder {List<Player>}
+     */
     private void initPoint(List<Player> playersInOrder) {
         this.createRounds();
 
@@ -37,14 +37,19 @@ public class Point {
             ListIterator<Round> it = this.rounds.listIterator();
 
             // I'm assuming the point is gonna end before three rounds
+            // TODO: add logic to treat tie cases and others
             if (it.hasNext()) {
                 Round nextRound = it.next();
+                // TODO: pass the players in the order they should play
                 nextRound.setPlayersInOrder(playersInOrder);
                 nextRound.initRound();
             }
         }
     }
 
+    /**
+     * Create the rounds of this point
+     */
     private void createRounds() {
         for (int i = 0; i < 3; i++) {
             Round round = new Round();
@@ -54,7 +59,7 @@ public class Point {
 
     /**
      * Get the ended status of the point
-     * @return
+     * @return {Boolean}
      */
     public boolean isEnded() {
         return this.ended;
@@ -62,6 +67,7 @@ public class Point {
 
     /**
      * Set the ended status of the point
+     * @param _ended {Boolean}
      */
     public void setEnded(boolean _ended) {
         this.ended = _ended;

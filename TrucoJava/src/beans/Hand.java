@@ -41,6 +41,10 @@ public class Hand {
         return card;
     }
 
+    /**
+     * Draw the next card of the hand
+     * @return {Card}
+     */
     public Card drawNextCard() {
         ListIterator<Card> it = this.cards.listIterator();
         return it.hasNext() ? it.next() : null;
