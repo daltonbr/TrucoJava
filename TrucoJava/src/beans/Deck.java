@@ -2,6 +2,7 @@ package beans;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -11,75 +12,94 @@ import java.util.Random;
  * @author lucas Pinheiro @lucaspin
  */
 public class Deck {
-    private ArrayList<Card> cards;
+    private List<Card> cards = new ArrayList<>();
     private Random randomGenerator = new Random();
 
     public Deck() {
-        cards = new ArrayList<>();
-        //Create new cards
+        // Create new cards
         for (Rank rank : Rank.values()) {
             for (Suit suit : Suit.values()) {
                 Card card = new Card(rank, suit, false);
-                cards.add(card);
+                this.cards.add(card);
             }
         }
     }
 
-    public ArrayList<Card> getCards() { return cards; }
+    public List<Card> getCards() { return cards; }
 
     public void setCards(ArrayList<Card> _deck) { this.cards = _deck; }
 
-    /* return (and remove) a random card from the Deck */
+    /**
+     * Return and remove a random card from the deck
+     * @return {Card}
+     */
     public Card drawRandomCard() {
-        int index = randomGenerator.nextInt(cards.size());
-        Card card = cards.get(index);
+        int index = this.randomGenerator.nextInt(cards.size());
+        Card card = this.cards.get(index);
         System.out.println("Card Picked: " + card.toString());
         cards.remove(index);
         return card;
     }
 
-    /* return n random cards from the Deck */
-    public ArrayList<Card> drawRandomCards(int _numberOfCardsToDraw) {
-        ArrayList<Card> cardArray = new ArrayList<>();
+    /**
+     * Return _numberOfCardsToDraw and remove them from the deck
+     * @param _numberOfCardsToDraw {int}
+     * @return {List<Card>}
+     */
+    public List<Card> drawRandomCards(int _numberOfCardsToDraw) {
+        List<Card> cardArray = new ArrayList<>();
         for (int i = 0; i < _numberOfCardsToDraw; i++){
-            int index = randomGenerator.nextInt(cards.size());
-            Card card = cards.get(index);
+            int index = this.randomGenerator.nextInt(this.cards.size());
+            Card card = this.cards.get(index);
             cardArray.add(card);
-            cards.remove(index);
+            this.cards.remove(index);
         }
         return cardArray;
     }
 
-    /* return (and remove) the first card from the Deck */
+    /**
+     * Return and remove the first card from the deck
+     * @return {Card}
+     */
     public Card drawTopCard() {
-        Card card = cards.get(0);
+        Card card = this.cards.get(0);
         cards.remove(0);
         System.out.println("Card Picked: " + card.toString());
         return card;
     }
 
-    /* return (and remove) the first n cards from the Deck */
-    public ArrayList<Card> drawTopCards(int _numberOfCardsToDraw) {
-        ArrayList<Card> cardArray = new ArrayList<>();
+    /**
+     * Return and remove the first n cards from the Deck
+     * @param _numberOfCardsToDraw {int}
+     * @return {List<Card>}
+     */
+    public List<Card> drawTopCards(int _numberOfCardsToDraw) {
+        List<Card> cardArray = new ArrayList<>();
         for (int i = 0; i < _numberOfCardsToDraw; i++){
-            Card card = cards.get(0);
+            Card card = this.cards.get(0);
             cardArray.add(card);
-            cards.remove(0);
+            this.cards.remove(0);
         }
         return cardArray;
     }
 
+    /**
+     * Shuffle the deck
+     */
     public void shuffleDeck() {
-        Collections.shuffle(cards);
+        Collections.shuffle(this.cards);
     }
 
+    /**
+     * Reset the deck
+     */
     public void resetDeck() {
         this.cards.clear();
         //Create new cards
         for (Rank rank : Rank.values()) {
             for (Suit suit : Suit.values()) {
                 Card card = new Card(rank, suit, false);
-                cards.add(card);
+                this.cards.add(card);
             }
         }
     }

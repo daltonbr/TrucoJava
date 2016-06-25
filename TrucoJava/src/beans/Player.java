@@ -11,13 +11,15 @@ import java.util.List;
 public abstract class Player {
     private String name;
     private Hand hand;
+    private Card currentChosenCard;
 
     /**
      * Constructor of the class
      * @param name {String} the name of the player
      */
-    public Player(String name) {
+    public Player(String name, List<Card> cards) {
         this.setName(name);
+        this.hand = new Hand(cards);
     }
 
     /**
@@ -45,11 +47,27 @@ public abstract class Player {
     }
 
     /**
-     * Get the current cards from the player's hand
-     * @return {List<Card>}
+     * Get the current chosen card by a player
+     * @return {Card}
      */
-    public List<Card> getHand() {
-        return this.hand.getCards();
+    public Card getCurrentChosenCard() {
+        return this.currentChosenCard;
+    }
+
+    /**
+     * Set the current chosen card by a player
+     * @param _card {Card}
+     */
+    public void setCurrentChosenCard(Card _card) {
+        this.currentChosenCard = _card;
+    }
+
+    /**
+     * Get the current cards from the player's hand
+     * @return {Hand}
+     */
+    public Hand getHand() {
+        return this.hand;
     }
 
     /**

@@ -4,6 +4,7 @@ import ui.*;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,8 +14,8 @@ import java.util.List;
  */
 public class GameController {
     private boolean ended = false;
-    private List<Player> players;
-    private Deck deck;
+    private List<Player> players = new ArrayList<>();
+    private Deck deck = new Deck();
 
     /**
      * Constructor of the class
@@ -42,10 +43,19 @@ public class GameController {
      * Initializes the game
      */
     private void initGame() {
-        // TODO: create players
-        // TODO: create deck
-        // TODO: create the points
-        // TODO: start game loop
+        // Create the players. Initially, this will be just two
+        HumanPlayer player1 = new HumanPlayer("player1", this.deck.drawRandomCards(3));
+        CPUPlayer player2 = new CPUPlayer("CPU player", this.deck.drawRandomCards(3));
+        this.players.add(player1);
+        this.players.add(player2);
+        this.initGameLoop();
+    }
+
+    private void initGameLoop() {
+        while (!this.isEnded()) {
+            Point point = new Point(this.players);
+            // TODO: do the rest of the game flow here
+        }
     }
 
     /**

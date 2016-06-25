@@ -2,6 +2,7 @@ package beans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Class to represent a player's hand.
@@ -10,13 +11,13 @@ import java.util.List;
  * @author Bruno Vedovetto @bleandro
  */
 public class Hand {
-    private ArrayList<Card> cards;
+    private List<Card> cards;
 
     /**
      * Constructor of the class
      */
-    public Hand() {
-        this.cards = new ArrayList<>();
+    public Hand(List<Card> _cards) {
+        this.cards = _cards;
     }
 
     /**
@@ -38,6 +39,11 @@ public class Hand {
         Card card = this.cards.get(_index);
         this.cards.remove(_index);
         return card;
+    }
+
+    public Card drawNextCard() {
+        ListIterator<Card> it = this.cards.listIterator();
+        return it.hasNext() ? it.next() : null;
     }
 
     /**

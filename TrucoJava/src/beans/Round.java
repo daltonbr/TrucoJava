@@ -1,5 +1,8 @@
 package beans;
 
+import java.util.List;
+import java.util.ListIterator;
+
 /**
  * Class that represents a round of a point of the game.
  * @author Lucas Pinheiro @lucaspin
@@ -10,30 +13,33 @@ public class Round {
     private boolean ended = false;
     private boolean tied = false;
     private Player winner;
-    private Player startPlayer;
+    private List<Player> playersInOrder;
 
     /**
-     * Constructor of the class
-     * @param _startPlayer {PLayer}
+     * Set the order of the players in this round
+     * @param _playersInOrder {List<Player>}
      */
-    public Round(Player _startPlayer) {
-        this.setStartPlayer(_startPlayer);
+    public void setPlayersInOrder(List<Player> _playersInOrder) {
+        this.playersInOrder = _playersInOrder;
+    }
+
+    private Player getNextPlayer() {
+        ListIterator<Player> it = this.playersInOrder.listIterator();
+        return it.hasNext() ? it.next() : null;
     }
 
     /**
-     * Set the start player of the round
-     * @param _startPlayer {Player}
+     * Init the round flow
      */
-    public void setStartPlayer(Player _startPlayer) {
-        this.startPlayer = _startPlayer;
-    }
+    public void initRound() {
+        while (!this.isEnded()) {
+            Player nextPlayer = this.getNextPlayer();
 
-    /**
-     * Get the start player of the round
-     * @return {Player}
-     */
-    public Player getStartPlayer() {
-        return this.startPlayer;
+            if (nextPlayer != null) {
+                nextPlayer.chooseCard();
+                // TODO: implement the rest of the round flow
+            }
+        }
     }
 
     /**

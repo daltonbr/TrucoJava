@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.List;
+
 /**
  * Class to represent a CPU player
  * @author Dalton Lima @daltonbr
@@ -12,12 +14,14 @@ public class CPUPlayer extends Player {
      * Constructor of the class
      * @param name {String}
      */
-    public CPUPlayer(String name) {
-        super(name);
+    public CPUPlayer(String name, List<Card> cards) {
+        super(name, cards);
     }
 
     @Override
     public void chooseCard() {
         // Here, we just apply a sequential method to choose a card.
+        // Initially, we just get the first card there
+        this.setCurrentChosenCard(this.getHand().drawNextCard());
     }
 }
