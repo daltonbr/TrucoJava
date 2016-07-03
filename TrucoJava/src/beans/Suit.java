@@ -7,10 +7,10 @@ package beans;
  * @author Bruno Vedovetto @bleandro
  */
 public enum Suit {
-    DIAMONDS("D"),
-    SPADES("S"),
-    HEARTS("H"),
-    CLUBS("C");
+    DIAMONDS("d"),
+    SPADES("s"),
+    HEARTS("h"),
+    CLUBS("c");
 
     private String value;
 
