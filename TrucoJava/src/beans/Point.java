@@ -12,6 +12,8 @@ import java.util.ListIterator;
  * @author Dalton Lima @daltonbr
  */
 public class Point {
+    static final int EARLY_WIN_ROUND_SCORE = 2;
+
     private boolean ended = false;
     private List<Round> rounds = new ArrayList<>();
     private Player dealer;
@@ -38,8 +40,7 @@ public class Point {
             ListIterator<Round> it = this.rounds.listIterator();
 
             // TODO: add logic to treat tie cases and others
-            while (it.hasNext()) {
-
+            while (it.hasNext() && !this.isEnded()) {
                 /* We order the players in the order they should play in the next round.
                    In order to do this, we must get the winner from the last round,
                    and set it as the first one of the list. For the first round, we just
@@ -55,6 +56,15 @@ public class Point {
                 Round nextRound = it.next();
                 nextRound.setPlayersInOrder(playersInOrder);
                 nextRound.initRound();
+
+                Player nextRoundWinner = nextRound.getWinner();
+
+                /* Check if some player's has won this point by
+                   winning two rounds in a row */
+                if (nextRoundWinner.getRoundScore() == EARLY_WIN_ROUND_SCORE) {
+                    this.setWinner(nextRoundWinner);
+                    this.setEnded(true);
+                }
             }
 
             // We end the point when all round has been played

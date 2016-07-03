@@ -12,6 +12,8 @@ public abstract class Player {
     private String name;
     private Hand hand;
     private Card currentChosenCard;
+    private int gameScore;
+    private int roundScore;
 
     /**
      * Constructor of the class
@@ -20,6 +22,52 @@ public abstract class Player {
     public Player(String name, List<Card> cards) {
         this.setName(name);
         this.hand = new Hand(cards);
+    }
+
+    /**
+     * Set the new player's score
+     * @param newScore {int}
+     */
+    public void setGameScore(int newScore) {
+        this.gameScore = newScore;
+    }
+
+    /**
+     * Get the current player's score
+     * @return {int}
+     */
+    public int getGameScore() {
+        return this.gameScore;
+    }
+
+    /**
+     * Increase the player's game score by one
+     */
+    public void increaseGameScore() {
+        this.gameScore++;
+    }
+
+    /**
+     * Increase the player's round score by one
+     */
+    public void increaseRoundScore() {
+        this.roundScore++;
+    }
+
+    /**
+     * Get the player's round score
+     * @return {int}
+     */
+    public int getRoundScore() {
+        return this.roundScore;
+    }
+
+    /**
+     * Set the round score
+     * @param newScore {int}
+     */
+    public void setRoundScore(int newScore) {
+        this.roundScore = newScore;
     }
 
     /**

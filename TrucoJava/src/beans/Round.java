@@ -48,7 +48,24 @@ public class Round {
 
             if (nextPlayer != null) {
                 nextPlayer.chooseCard();
-                // TODO: implement the rest of the round flow
+            } else {
+                // Compare the chosen cards
+                Card winnerCard = this.playersInOrder.get(0).getCurrentChosenCard();
+                Player winnerPlayer = this.playersInOrder.get(0);
+
+                // TODO: consider tie cases
+
+                for (Player player : this.playersInOrder) {
+                    Card playerCard = player.getCurrentChosenCard();
+                    if (playerCard.isStrongerThan(winnerCard)) {
+                        winnerCard = playerCard;
+                        winnerPlayer = player;
+                    }
+                }
+
+                winnerPlayer.increaseRoundScore();
+                this.setWinner(winnerPlayer);
+                this.setEnded(true);
             }
         }
     }
