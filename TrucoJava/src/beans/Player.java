@@ -140,6 +140,13 @@ public abstract class Player {
     }
 
     /**
+     * Reset the player's round score to zero
+     */
+    public void resetRoundScore() {
+        this.roundScore = 0;
+    }
+
+    /**
      * Method invoked when a player must choose a card.
      */
     abstract public void chooseCard();

@@ -57,7 +57,19 @@ public class GameController {
             if (pointWinner.getGameScore() == WIN_GAME_SCORE) {
                 this.setWinner(pointWinner);
                 this.setEnded(true);
+            } else {
+                this.deck.resetDeck();
+                this.resetPlayersRoundScore();
             }
+        }
+    }
+
+    /**
+     * Reset the player's round score before a new point begins
+     */
+    private void resetPlayersRoundScore() {
+        for (Player player : this.players) {
+            player.resetRoundScore();
         }
     }
 

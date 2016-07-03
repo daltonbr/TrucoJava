@@ -24,18 +24,7 @@ public class Point {
     public Point(List<Player> playersInOrder) {
         this.setDealer(playersInOrder.get(0));
         this.setPointValue(PointValue.ONE);
-        this.resetPlayersRoundScore(playersInOrder);
         this.initPoint(playersInOrder);
-    }
-
-    /**
-     * Reset the player's round score before a new point begins
-     * @param _players {List<Player>}
-     */
-    private void resetPlayersRoundScore(List<Player> _players) {
-        for (Player player : _players) {
-            player.setRoundScore(0);
-        }
     }
 
     /**
