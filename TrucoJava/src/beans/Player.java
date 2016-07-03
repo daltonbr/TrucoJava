@@ -12,8 +12,8 @@ public abstract class Player {
     private String name;
     private Hand hand;
     private Card currentChosenCard;
-    private int gameScore;
-    private int roundScore;
+    private int gameScore = 0;
+    private int roundScore = 0;
 
     /**
      * Constructor of the class
@@ -43,8 +43,8 @@ public abstract class Player {
     /**
      * Increase the player's game score by one
      */
-    public void increaseGameScore() {
-        this.gameScore++;
+    public void increaseGameScore(int increment) {
+        this.gameScore += increment;
     }
 
     /**
@@ -136,7 +136,7 @@ public abstract class Player {
      * Called when a player declines a truco call
      */
     public void fold() {
-
+        // TODO
     }
 
     /**

@@ -12,8 +12,6 @@ import java.util.ListIterator;
  * @author Dalton Lima @daltonbr
  */
 public class Point {
-    static final int EARLY_WIN_ROUND_SCORE = 2;
-
     private boolean ended = false;
     private List<Round> rounds = new ArrayList<>();
     private Player dealer;
@@ -26,7 +24,18 @@ public class Point {
     public Point(List<Player> playersInOrder) {
         this.setDealer(playersInOrder.get(0));
         this.setPointValue(PointValue.ONE);
+        this.resetPlayersRoundScore(playersInOrder);
         this.initPoint(playersInOrder);
+    }
+
+    /**
+     * Reset the player's round score before a new point begins
+     * @param _players {List<Player>}
+     */
+    private void resetPlayersRoundScore(List<Player> _players) {
+        for (Player player : _players) {
+            player.setRoundScore(0);
+        }
     }
 
     /**
@@ -61,7 +70,8 @@ public class Point {
 
                 /* Check if some player's has won this point by
                    winning two rounds in a row */
-                if (nextRoundWinner.getRoundScore() == EARLY_WIN_ROUND_SCORE) {
+                if (nextRoundWinner.getRoundScore() == GameController.EARLY_WIN_ROUND_SCORE) {
+                    nextRoundWinner.increaseGameScore(this.pointValue.getValue());
                     this.setWinner(nextRoundWinner);
                     this.setEnded(true);
                 }

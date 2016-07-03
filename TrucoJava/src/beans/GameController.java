@@ -1,10 +1,7 @@
 package beans;
 
-import sun.applet.Main;
 import ui.*;
 
-import javax.swing.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +11,12 @@ import java.util.List;
  * @author Dalton Lima @daltonbr
  */
 public class GameController {
+    static final int EARLY_WIN_ROUND_SCORE = 2;
+    static final int WIN_GAME_SCORE = 12;
+
     private MainView view;
     private boolean ended = false;
+    private Player winner;
     private List<Player> players = new ArrayList<>();
     private Deck deck = new Deck();
 
@@ -50,8 +51,22 @@ public class GameController {
     private void initGameLoop() {
         while (!this.isEnded()) {
             Point point = new Point(this.players);
-            // TODO: do the rest of the game flow here
+
+            // Check if the game has ended
+            Player pointWinner = point.getWinner();
+            if (pointWinner.getGameScore() == WIN_GAME_SCORE) {
+                this.setWinner(pointWinner);
+                this.setEnded(true);
+            }
         }
+    }
+
+    /**
+     * Set the game winner player
+     * @param _winner {Player}
+     */
+    public void setWinner(Player _winner) {
+        this.winner = _winner;
     }
 
     /**
