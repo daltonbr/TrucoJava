@@ -24,49 +24,31 @@ public class Round {
     }
 
     /**
-     * Return and remove the next player to play on the ruond
-     * @return {Player}
-     */
-    private Player getNextPlayer() {
-        ListIterator<Player> it = this.playersInOrder.listIterator();
-        Player nextPlayer = null;
-
-        if (it.hasNext()) {
-            nextPlayer = it.next();
-            it.remove();
-        }
-
-        return nextPlayer;
-    }
-
-    /**
      * Init the round flow
      */
     public void initRound() {
         while (!this.isEnded()) {
-            Player nextPlayer = this.getNextPlayer();
-
-            if (nextPlayer != null) {
-                nextPlayer.chooseCard();
-            } else {
-                // Compare the chosen cards
-                Card winnerCard = this.playersInOrder.get(0).getCurrentChosenCard();
-                Player winnerPlayer = this.playersInOrder.get(0);
-
-                // TODO: consider tie cases
-
-                for (Player player : this.playersInOrder) {
-                    Card playerCard = player.getCurrentChosenCard();
-                    if (playerCard.isStrongerThan(winnerCard)) {
-                        winnerCard = playerCard;
-                        winnerPlayer = player;
-                    }
-                }
-
-                winnerPlayer.increaseRoundScore();
-                this.setWinner(winnerPlayer);
-                this.setEnded(true);
+            for (Player aPlayersInOrder : this.playersInOrder) {
+                aPlayersInOrder.chooseCard();
             }
+
+            // Compare the chosen cards
+            Card winnerCard = this.playersInOrder.get(0).getCurrentChosenCard();
+            Player winnerPlayer = this.playersInOrder.get(0);
+
+            // TODO: consider tie cases
+
+            for (Player player : this.playersInOrder) {
+                Card playerCard = player.getCurrentChosenCard();
+                if (playerCard.isStrongerThan(winnerCard)) {
+                    winnerCard = playerCard;
+                    winnerPlayer = player;
+                }
+            }
+
+            winnerPlayer.increaseRoundScore();
+            this.setWinner(winnerPlayer);
+            this.setEnded(true);
         }
     }
 
