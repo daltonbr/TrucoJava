@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -36,15 +37,53 @@ public class Point {
         while (!this.isEnded()) {
             ListIterator<Round> it = this.rounds.listIterator();
 
-            // I'm assuming the point is gonna end before three rounds
             // TODO: add logic to treat tie cases and others
-            if (it.hasNext()) {
+            while (it.hasNext()) {
+
+                /* We order the players in the order they should play in the next round.
+                   In order to do this, we must get the winner from the last round,
+                   and set it as the first one of the list. For the first round, we just
+                   pass the players as they come. Also, we just do this reordering if the round
+                   is not the first one.
+                 */
+                if (it.nextIndex() != 0) {
+                    int previousIndex = it.previousIndex();
+                    Round previousRound = this.rounds.get(previousIndex);
+                    playersInOrder = this.orderPlayers(playersInOrder, previousRound.getWinner());
+                }
+
                 Round nextRound = it.next();
-                // TODO: pass the players in the order they should play
                 nextRound.setPlayersInOrder(playersInOrder);
                 nextRound.initRound();
             }
+
+            // We end the point when all round has been played
+            this.setEnded(true);
         }
+    }
+
+    /**
+     * Order the players setting the last round winner as the
+     * start player of the next round.
+     * @param players {List<Player>}
+     * @param firstPlayer {Player}
+     * @return {List<Player>}
+     */
+    private List<Player> orderPlayers(List<Player> players, Player firstPlayer) {
+        List<Player> newPlayers = new ArrayList<>();
+        newPlayers.add(firstPlayer);
+        ListIterator<Player> it = players.listIterator();
+
+        if (it.hasNext()) {
+            Player nextPlayer = it.next();
+            if (nextPlayer.getName().equals(firstPlayer.getName())) {
+                it.remove();
+            } else {
+                newPlayers.add(nextPlayer);
+            }
+        }
+
+        return newPlayers;
     }
 
     /**

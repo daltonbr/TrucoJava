@@ -23,9 +23,20 @@ public class Round {
         this.playersInOrder = _playersInOrder;
     }
 
+    /**
+     * Return and remove the next player to play on the ruond
+     * @return {Player}
+     */
     private Player getNextPlayer() {
         ListIterator<Player> it = this.playersInOrder.listIterator();
-        return it.hasNext() ? it.next() : null;
+        Player nextPlayer = null;
+
+        if (it.hasNext()) {
+            nextPlayer = it.next();
+            it.remove();
+        }
+
+        return nextPlayer;
     }
 
     /**
