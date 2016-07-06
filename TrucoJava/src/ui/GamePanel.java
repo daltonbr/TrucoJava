@@ -13,11 +13,11 @@ class GamePanel extends JPanel {
     static final int DEFAULT_PANEL_WIDTH = 300;
     static final int DEFAULT_PANEL_HEIGHT = 150;
 
-    private BottomPlayerPanel bottomPlayerPanel;
-    private TopPlayerPanel topPlayerPanel;
-    private ScorePanel scorePanel;
-    private ButtonPanel buttonPanel;
-    private MiddlePanel middlePanel;
+    public BottomPlayerPanel bottomPlayerPanel;
+    public TopPlayerPanel topPlayerPanel;
+    public ScorePanel scorePanel;
+    public ButtonPanel buttonPanel;
+    public MiddlePanel middlePanel;
 
     // This variable is responsible for holding the layout options
     private GridBagConstraints constraints = new GridBagConstraints();

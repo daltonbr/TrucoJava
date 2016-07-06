@@ -91,6 +91,10 @@ public class GameController {
         this.winner = _winner;
     }
 
+    public void setChosenCardForHumanPlayer(Suit suit, Rank rank, boolean isManilha) {
+        this.players.get(0).setCurrentChosenCard(new Card(rank, suit, isManilha));
+    }
+
     /**
      * Set the new status of the game
      * @param ended {Boolean}

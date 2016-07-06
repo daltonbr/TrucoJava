@@ -1,11 +1,11 @@
 package ui;
 
-import javax.imageio.ImageIO;
+import beans.GameController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class BottomPlayerPanel extends JPanel {
     private List<JButton> cards = new ArrayList<>();
+    private GameController controller;
 
     /**
      * Constructor of the class
@@ -39,19 +40,27 @@ public class BottomPlayerPanel extends JPanel {
         this.removeOldCardsFromPanel();
 
         for (beans.Card card : cards) {
-            JButton newCardButton = new JButton();
-            newCardButton.setText(card.toString());
-            newCardButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    // TODO: choose card clicked
-                }
+            CardButton newCardButton = new CardButton(card.toString());
+            newCardButton.setRank(card.getRank());
+            newCardButton.setSuit(card.getSuit());
+            newCardButton.setManilha(card.isManilha());
+
+            newCardButton.addActionListener(e -> {
+                CardButton cardButtonClicked = (CardButton) e.getSource();
+                cardButtonClicked.setEnabled(false);
+                this.controller.setChosenCardForHumanPlayer(cardButtonClicked.getSuit(),
+                                                            cardButtonClicked.getRank(),
+                                                            cardButtonClicked.isManilha());
             });
 
             this.cards.add(newCardButton);
         }
 
         this.addNewCardsToPanel();
+    }
+
+    public void setController(GameController controller) {
+        this.controller = controller;
     }
 
     private void addNewCardsToPanel() {

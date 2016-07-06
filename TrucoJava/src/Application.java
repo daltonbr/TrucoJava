@@ -15,6 +15,7 @@ public class Application {
         GameController gameController = new GameController();
 
         MainView mainView = new MainView();
+        mainView.setBottomPanelController(gameController);
         mainView.setVisible(true);
 
         // Set the view and init the game

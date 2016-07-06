@@ -1,6 +1,7 @@
 package ui;
 
 import beans.Card;
+import beans.GameController;
 
 import javax.swing.*;
 import java.util.List;
@@ -54,5 +55,9 @@ public class MainView extends JFrame {
         this.gamePanel.topPlayerPanel.setCards(cards);
         this.revalidate();
         this.repaint();
+    }
+
+    public void setBottomPanelController(GameController controller) {
+        this.gamePanel.bottomPlayerPanel.setController(controller);
     }
 }
