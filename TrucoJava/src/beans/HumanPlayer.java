@@ -10,8 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author Bruno Vedovetto @bleandro
  */
 public class HumanPlayer extends Player {
-    static Thread threadObject;
-    private AtomicBoolean choosingCard = new AtomicBoolean(false);
+    private Boolean choosingCard = false;
 
     /**
      * Constructor of the class
@@ -26,27 +25,21 @@ public class HumanPlayer extends Player {
         // has clicked on a card, choosing it
         this.setChoosingCard(true);
 
-        Runnable runnable = () -> {
-            if (this.isChoosingCard().get()) {
-                synchronized (threadObject) {
-                    try {
-                        threadObject.wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+        //Waits while the User is choosing the card
+        while (this.isChoosingCard()) {
+            try {
+                new Thread().sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        };
-
-        threadObject = new Thread(runnable);
-        threadObject.start();
+        }
     }
 
-    synchronized public void setChoosingCard(boolean _choosingCard) {
-        this.choosingCard.set(_choosingCard);
+    public void setChoosingCard(boolean _choosingCard) {
+        this.choosingCard = _choosingCard;
     }
 
-    public AtomicBoolean isChoosingCard() {
+    public Boolean isChoosingCard() {
         return this.choosingCard;
     }
 
