@@ -26,7 +26,8 @@ public class CardButton extends JButton {
         this.setFocusable(false);
         try {
             Image cardImage = ImageIO.read(getClass().getResource("/resources/" + name + ".png"));
-            super.setIcon(new ImageIcon(cardImage));
+            Image scaledImage = cardImage.getScaledInstance(50, 70, Image.SCALE_SMOOTH);
+            super.setIcon(new ImageIcon(scaledImage));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
