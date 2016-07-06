@@ -9,7 +9,7 @@ import javax.swing.*;
  * @author Dalton Lima @daltonbr
  * @author Bruno Vedovetto @bleandro
  */
-class GamePanel extends JPanel {
+public class GamePanel extends JPanel {
     static final int DEFAULT_PANEL_WIDTH = 300;
     static final int DEFAULT_PANEL_HEIGHT = 150;
 
@@ -25,7 +25,7 @@ class GamePanel extends JPanel {
     /**
      * Constructor of the class
      */
-    GamePanel() {
+    public GamePanel() {
         this.setInitialOpts();
         this.createTopPlayerPanel();
         this.createBottomPlayerPanel();

@@ -37,7 +37,7 @@ public class ScorePanel extends JPanel {
     }
 
     public void setPlayer2RoundScore(int score) {
-        this.player2RoundScore.setText("Player 1 ==> " + score);
+        this.player2RoundScore.setText("Player 2 ==> " + score);
     }
 
     private void setLabelsOptions() {

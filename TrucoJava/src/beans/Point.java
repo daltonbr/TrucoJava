@@ -1,5 +1,7 @@
 package beans;
 
+import ui.MainView;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.ListIterator;
  * @author Dalton Lima @daltonbr
  */
 public class Point {
+    private MainView view;
     private boolean ended = false;
     private List<Round> rounds = new ArrayList<>();
     private Player dealer;
@@ -24,14 +27,13 @@ public class Point {
     public Point(List<Player> playersInOrder) {
         this.setDealer(playersInOrder.get(0));
         this.setPointValue(PointValue.ONE);
-        this.initPoint(playersInOrder);
     }
 
     /**
      * Init a point flow
      * @param playersInOrder {List<Player>}
      */
-    private void initPoint(List<Player> playersInOrder) {
+    public void initPoint(List<Player> playersInOrder) {
         this.createRounds();
 
         while (!this.isEnded()) {
@@ -52,6 +54,7 @@ public class Point {
                 }
 
                 Round nextRound = it.next();
+                nextRound.setView(this.view);
                 nextRound.setPlayersInOrder(playersInOrder);
                 nextRound.initRound();
 
@@ -61,6 +64,13 @@ public class Point {
                    winning two rounds in a row */
                 if (nextRoundWinner.getRoundScore() == GameController.EARLY_WIN_ROUND_SCORE) {
                     nextRoundWinner.increaseGameScore(this.pointValue.getValue());
+
+                    if (nextRoundWinner.getName().equals("player1")) {
+                        this.view.gamePanel.scorePanel.setPlayer1GameScore(nextRoundWinner.getGameScore());
+                    } else {
+                        this.view.gamePanel.scorePanel.setPlayer2GameScore(nextRoundWinner.getGameScore());
+                    }
+
                     this.setWinner(nextRoundWinner);
                     this.setEnded(true);
                 }
@@ -69,6 +79,10 @@ public class Point {
             // We end the point when all round has been played
             this.setEnded(true);
         }
+    }
+
+    public void setView(MainView view) {
+        this.view = view;
     }
 
     /**

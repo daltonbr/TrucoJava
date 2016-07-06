@@ -1,7 +1,8 @@
 package beans;
 
+import ui.MainView;
+
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Class that represents a round of a point of the game.
@@ -10,6 +11,7 @@ import java.util.ListIterator;
  * @author Dalton Lima @daltonbr
  */
 public class Round {
+    private MainView view;
     private boolean ended = false;
     private boolean tied = false;
     private Player winner;
@@ -47,9 +49,20 @@ public class Round {
             }
 
             winnerPlayer.increaseRoundScore();
+
+            if (winnerPlayer.getName().equals("player1")) {
+                this.view.gamePanel.scorePanel.setPlayer1RoundScore(winnerPlayer.getRoundScore());
+            } else {
+                this.view.gamePanel.scorePanel.setPlayer2RoundScore(winnerPlayer.getRoundScore());
+            }
+
             this.setWinner(winnerPlayer);
             this.setEnded(true);
         }
+    }
+
+    public void setView(MainView view) {
+        this.view = view;
     }
 
     /**

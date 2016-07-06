@@ -61,6 +61,8 @@ public class GameController {
 
             // Instantiate a new point
             Point point = new Point(this.players);
+            point.setView(this.view);
+            point.initPoint(this.players);
 
             // Check if the game has ended
             Player pointWinner = point.getWinner();
@@ -80,6 +82,12 @@ public class GameController {
     private void resetPlayersRoundScore() {
         for (Player player : this.players) {
             player.resetRoundScore();
+
+            if (player.getName().equals("player1")) {
+                this.view.gamePanel.scorePanel.setPlayer1RoundScore(player.getRoundScore());
+            } else {
+                this.view.gamePanel.scorePanel.setPlayer2RoundScore(player.getRoundScore());
+            }
         }
     }
 
