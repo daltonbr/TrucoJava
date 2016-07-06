@@ -3,7 +3,10 @@ package ui;
 import beans.Rank;
 import beans.Suit;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
 
 /**
  * Class for the bottom panel of the application.
@@ -21,6 +24,18 @@ public class CardButton extends JButton {
     CardButton(String name) {
         super(name);
         this.setFocusable(false);
+        try {
+            Image cardImage = ImageIO.read(getClass().getResource("/resources/" + name + ".png"));
+            super.setIcon(new ImageIcon(cardImage));
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+
+        // half size
+        //super.setPreferredSize(new Dimension(70,95));
+        super.setBorder(null);
+        super.setText(null);
+
     }
 
     public void setRank(Rank _rank) {
