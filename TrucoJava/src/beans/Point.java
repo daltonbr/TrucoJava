@@ -37,6 +37,7 @@ public class Point {
         this.createRounds();
 
         while (!this.isEnded()) {
+            Round previousRound = null;
             ListIterator<Round> it = this.rounds.listIterator();
 
             // TODO: add logic to treat tie cases and others
@@ -49,7 +50,7 @@ public class Point {
                  */
                 if (it.nextIndex() != 0) {
                     int previousIndex = it.previousIndex();
-                    Round previousRound = this.rounds.get(previousIndex);
+                    previousRound = this.rounds.get(previousIndex);
                     playersInOrder = this.orderPlayers(playersInOrder, previousRound.getWinner());
                 }
 
@@ -60,25 +61,52 @@ public class Point {
 
                 Player nextRoundWinner = nextRound.getWinner();
 
+                //If "nextRoundWinner" is null the Round tied
+                if (nextRoundWinner == null){
+                    /* If "previousRound" is null, this is the First round
+                       In this case, the next Winner win the point */
+                    if(previousRound == null){
+                        //TODO: Consider ties cases When it happens in the first round
+                    }
+                    //The Winner of this round is the one who won the FIRST round
+                    else{
+                        nextRoundWinner = this.rounds.get(0).getWinner();
+
+                        if (nextRoundWinner == null){
+                            //TODO: Consider more than ONE tie
+                        }else {
+                            endPoint(nextRoundWinner);
+                        }
+                    }
+                }
+
                 /* Check if some player's has won this point by
                    winning two rounds in a row */
                 if (nextRoundWinner.getRoundScore() == GameController.EARLY_WIN_ROUND_SCORE) {
-                    nextRoundWinner.increaseGameScore(this.pointValue.getValue());
-
-                    if (nextRoundWinner.getName().equals("player1")) {
-                        this.view.gamePanel.scorePanel.setPlayer1GameScore(nextRoundWinner.getGameScore());
-                    } else {
-                        this.view.gamePanel.scorePanel.setPlayer2GameScore(nextRoundWinner.getGameScore());
-                    }
-
-                    this.setWinner(nextRoundWinner);
-                    this.setEnded(true);
+                    endPoint(nextRoundWinner);
                 }
             }
 
             // We end the point when all round has been played
             this.setEnded(true);
         }
+    }
+
+    /**
+     * Ends the point and updates the view with the new score
+     * @param winner {Player}
+     */
+    public void endPoint(Player winner){
+        winner.increaseGameScore(this.pointValue.getValue());
+
+        if (winner.getName().equals("player1")) {
+            this.view.gamePanel.scorePanel.setPlayer1GameScore(winner.getGameScore());
+        } else {
+            this.view.gamePanel.scorePanel.setPlayer2GameScore(winner.getGameScore());
+        }
+
+        this.setWinner(winner);
+        this.setEnded(true);
     }
 
     public void setView(MainView view) {

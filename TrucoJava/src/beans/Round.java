@@ -38,22 +38,27 @@ public class Round {
             Card winnerCard = this.playersInOrder.get(0).getCurrentChosenCard();
             Player winnerPlayer = this.playersInOrder.get(0);
 
-            // TODO: consider tie cases
-
             for (Player player : this.playersInOrder) {
                 Card playerCard = player.getCurrentChosenCard();
                 if (playerCard.isStrongerThan(winnerCard)) {
                     winnerCard = playerCard;
                     winnerPlayer = player;
                 }
+
+                //Here we have a tie. So there's no Winner here
+                else if ( (!playerCard.getSuit().equals(winnerCard.getSuit()))
+                     && ( !(playerCard.isStrongerThan(winnerCard)) && !(winnerCard.isStrongerThan(playerCard)) ) )
+                    winnerPlayer = null;
             }
 
-            winnerPlayer.increaseRoundScore();
+            if (winnerPlayer != null) {
+                winnerPlayer.increaseRoundScore();
 
-            if (winnerPlayer.getName().equals("player1")) {
-                this.view.gamePanel.scorePanel.setPlayer1RoundScore(winnerPlayer.getRoundScore());
-            } else {
-                this.view.gamePanel.scorePanel.setPlayer2RoundScore(winnerPlayer.getRoundScore());
+                if (winnerPlayer.getName().equals("player1")) {
+                    this.view.gamePanel.scorePanel.setPlayer1RoundScore(winnerPlayer.getRoundScore());
+                } else {
+                    this.view.gamePanel.scorePanel.setPlayer2RoundScore(winnerPlayer.getRoundScore());
+                }
             }
 
             this.setWinner(winnerPlayer);
