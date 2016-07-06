@@ -92,7 +92,13 @@ public class GameController {
     }
 
     public void setChosenCardForHumanPlayer(Suit suit, Rank rank, boolean isManilha) {
-        this.players.get(0).setCurrentChosenCard(new Card(rank, suit, isManilha));
+        for (Player player : this.players) {
+            if (player instanceof HumanPlayer) {
+                HumanPlayer humanPlayer = (HumanPlayer) player;
+                humanPlayer.setCurrentChosenCard(new Card(rank, suit, isManilha));
+                humanPlayer.setChoosingCard(false);
+            }
+        }
     }
 
     /**
