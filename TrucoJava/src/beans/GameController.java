@@ -25,8 +25,8 @@ public class GameController {
      */
     public void initGame() {
         // Create the players. Initially, this will be just two
-        HumanPlayer player1 = new HumanPlayer("player1", this.deck.drawRandomCards(3));
-        CPUPlayer player2 = new CPUPlayer("CPU player", this.deck.drawRandomCards(3));
+        HumanPlayer player1 = new HumanPlayer("player1");
+        CPUPlayer player2 = new CPUPlayer("CPU player");
         this.players.add(player1);
         this.players.add(player2);
         this.initGameLoop();
@@ -50,6 +50,16 @@ public class GameController {
 
     private void initGameLoop() {
         while (!this.isEnded()) {
+            // Set the player's hand
+            for (Player player : this.players) {
+                player.setHand(new Hand(this.deck.drawRandomCards(3)));
+            }
+
+            // TODO: check this
+            this.view.setCardsOnTopPanel(this.players.get(0).getHand().getCards());
+            this.view.setCardsOnBottomPanel(this.players.get(1).getHand().getCards());
+
+            // Instantiate a new point
             Point point = new Point(this.players);
 
             // Check if the game has ended

@@ -93,7 +93,7 @@ public class Card implements Comparable<Card> {
 
     @Override
     public String toString(){
-        return getRank().getValue() + getSuit().getValue() + isManilha();
+        return getRank().getValue() + getSuit().getValue();
     }
 
     /**

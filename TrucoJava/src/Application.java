@@ -1,7 +1,6 @@
 import beans.*;
 import ui.MainView;
 
-import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -15,7 +14,6 @@ public class Application {
         // Create the main controller
         GameController gameController = new GameController();
 
-        // Create the main view
         MainView mainView = new MainView();
         mainView.setVisible(true);
 

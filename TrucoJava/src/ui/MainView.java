@@ -1,6 +1,9 @@
 package ui;
 
+import beans.Card;
+
 import javax.swing.*;
+import java.util.List;
 
 /**
  * @author Lucas Pinheiro @lucaspin
@@ -35,9 +38,21 @@ public class MainView extends JFrame {
      */
     private void initMainViewOpts() {
         this.setSize(MainView.MINIMUM_WIDTH, MainView.MINIMUM_HEIGHT);
-//        this.setResizable(false);
+        this.setResizable(false);
 
         // Center the frame
         this.setLocationRelativeTo(null);
+    }
+
+    public void setCardsOnTopPanel(List<Card> cards) {
+        this.gamePanel.bottomPlayerPanel.setCards(cards);
+        this.revalidate();
+        this.repaint();
+    }
+
+    public void setCardsOnBottomPanel(List<Card> cards) {
+        this.gamePanel.topPlayerPanel.setCards(cards);
+        this.revalidate();
+        this.repaint();
     }
 }

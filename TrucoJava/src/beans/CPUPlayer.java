@@ -14,8 +14,8 @@ public class CPUPlayer extends Player {
      * Constructor of the class
      * @param name {String}
      */
-    public CPUPlayer(String name, List<Card> cards) {
-        super(name, cards);
+    public CPUPlayer(String name) {
+        super(name);
     }
 
     @Override

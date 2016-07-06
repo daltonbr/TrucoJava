@@ -16,8 +16,8 @@ public class HumanPlayer extends Player {
     /**
      * Constructor of the class
      */
-    public HumanPlayer(String name, List<Card> cards) {
-        super(name, cards);
+    public HumanPlayer(String name) {
+        super(name);
     }
 
     @Override

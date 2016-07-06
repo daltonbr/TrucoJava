@@ -19,9 +19,8 @@ public abstract class Player {
      * Constructor of the class
      * @param name {String} the name of the player
      */
-    public Player(String name, List<Card> cards) {
+    public Player(String name) {
         this.setName(name);
-        this.hand = new Hand(cards);
     }
 
     /**
