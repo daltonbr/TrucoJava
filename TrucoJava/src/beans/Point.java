@@ -81,14 +81,10 @@ public class Point {
     private List<Player> orderPlayers(List<Player> players, Player firstPlayer) {
         List<Player> newPlayers = new ArrayList<>();
         newPlayers.add(firstPlayer);
-        ListIterator<Player> it = players.listIterator();
 
-        if (it.hasNext()) {
-            Player nextPlayer = it.next();
-            if (nextPlayer.getName().equals(firstPlayer.getName())) {
-                it.remove();
-            } else {
-                newPlayers.add(nextPlayer);
+        for (Player player : players) {
+            if (!player.getName().equals(firstPlayer.getName())) {
+                newPlayers.add(player);
             }
         }
 
