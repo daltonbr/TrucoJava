@@ -27,4 +27,11 @@ public enum Rank {
     public String getValue() {
         return this.value;
     }
+
+    public Rank getNext() {
+        return this.ordinal() < Rank.values().length - 1
+                ? Rank.values()[this.ordinal() + 1]
+                : Four;
+    }
+
 }
