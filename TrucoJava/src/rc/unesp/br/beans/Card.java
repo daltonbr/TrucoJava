@@ -8,7 +8,7 @@ package rc.unesp.br.beans;
  */
 public class Card implements Comparable<Card> {
     public static final String BACK_CARD_IMAGE_SOURCE = "/rc/unesp/br/resources/cardBack_red3.png";
-    static final String IMAGE_BASE_URI = "/resources/";
+    static final String IMAGE_BASE_URI = "/rc/unesp/br/resources/";
 
     private Suit suit;
     private Rank rank;
