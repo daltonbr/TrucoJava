@@ -23,6 +23,7 @@ public class GameController {
     private List<Player> players = new ArrayList<>();
     private Deck deck = new Deck();
     private Card turnedCard;  // ('vira' in Portuguese), the card that determine the Trump Cards (manilhas)
+    private Card faceDownCard; // to represent the deck in the table
 
     /**
      * Initializes the game
@@ -33,6 +34,9 @@ public class GameController {
         CPUPlayer player2 = new CPUPlayer("CPU player");
         this.players.add(player1);
         this.players.add(player2);
+        //TODO: Ckeck this: instantiating any card here, just to avoid null
+        this.faceDownCard = new Card(Rank.Ace, Suit.CLUBS, false);  // this card will be showed at middle panel, as the deck
+        this.faceDownCard.setBackCardImageSource();
         this.initGameLoop();
     }
 
@@ -74,6 +78,7 @@ public class GameController {
             turnedCard = this.deck.drawRandomCard();
             List<Card> middleCardList = new ArrayList<>();
             middleCardList.add(turnedCard);
+            middleCardList.add(faceDownCard);
             this.view.setCardsOnMiddlePanel(middleCardList);
             System.out.println("Turned Card: " + turnedCard.getRank());
             //System.out.println("Trump Cards will be: " + turnedCard.getRank().getNext());

@@ -1,5 +1,7 @@
 package rc.unesp.br.beans;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 /**
  * Class to represent one card of the game.
  * @author Dalton Lima @daltonbr
@@ -40,7 +42,7 @@ public class Card implements Comparable<Card> {
      * Set the image source for a card
      * @param _imageSource {String}
      */
-    private void setImageSource(String _imageSource) {
+    public void setImageSource(String _imageSource) {
         this.imageSource = _imageSource;
     }
 
@@ -51,6 +53,11 @@ public class Card implements Comparable<Card> {
     public boolean isManilha() {
         return manilha;
     }
+
+    /**
+     * Set the image source for the standard Back Card
+     */
+    public void setBackCardImageSource() {this.imageSource = BACK_CARD_IMAGE_SOURCE;}
 
     /**
      * Set if a card is a manilha
