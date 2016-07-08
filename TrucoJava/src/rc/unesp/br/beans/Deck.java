@@ -36,7 +36,7 @@ public class Deck {
     public Card drawRandomCard() {
         int index = this.randomGenerator.nextInt(cards.size());
         Card card = this.cards.get(index);
-        System.out.println("Card Picked: " + card.toString());
+        //System.out.println("Card Picked: " + card.toString());
         cards.remove(index);
         return card;
     }

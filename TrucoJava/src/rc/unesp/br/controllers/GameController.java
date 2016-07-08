@@ -20,6 +20,7 @@ public class GameController {
     private Player winner;
     private List<Player> players = new ArrayList<>();
     private Deck deck = new Deck();
+    private Card turnedCard;  // ('vira' in Portuguese), the card that determine the Trump Cards (manilhas)
 
     /**
      * Initializes the game
@@ -65,9 +66,21 @@ public class GameController {
 
     private void initGameLoop() {
         while (!this.isEnded()) {
+            // Instantiate a 'Turned Card' or 'Vira' (in Portuguese)
+            turnedCard = this.deck.drawRandomCard();
+            //System.out.println("Turned Card: " + vira.getRank());
+            //System.out.println("Trump Cards will be: " + vira.getRank().getNext());
             // Set the player's hand
+            Hand hand = null;
             for (Player player : this.players) {
-                player.setHand(new Hand(this.deck.drawRandomCards(3)));
+                hand = new Hand(this.deck.drawRandomCards(3));
+                //checking for 'Trump Cards' or 'Manilhas' (in Portugese)
+                for(Card card : hand.getCards()) {
+                    if (card.getRank().equals(turnedCard.getRank().getNext())) {
+                        card.setManilha(true);
+                    }
+                }
+                player.setHand(hand);
             }
 
             // TODO: check this
