@@ -3,7 +3,6 @@ package beans;
 import ui.MainView;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -61,29 +60,26 @@ public class Point {
 
                 Player nextRoundWinner = nextRound.getWinner();
 
-                //If "nextRoundWinner" is null the Round tied
-                if (nextRoundWinner == null){
-                    /* If "previousRound" is null, this is the First round
-                       In this case, the next Winner win the point */
-                    if(previousRound == null){
-                        //TODO: Consider ties cases When it happens in the first round
-                    }
-                    //The Winner of this round is the one who won the FIRST round
-                    else{
-                        nextRoundWinner = this.rounds.get(0).getWinner();
+                /* Considering TIE cases */
+                Player firstRoundWinner = this.rounds.get(0).getWinner();
 
-                        if (nextRoundWinner == null){
-                            //TODO: Consider more than ONE tie
-                        }else {
-                            endPoint(nextRoundWinner);
-                        }
-                    }
+                /* If there's no Winner in THIS round
+                   And there's a Winner in the first round then
+                   The Winner of the first round wins the point */
+                if ((nextRoundWinner == null) && (firstRoundWinner != null)){
+                    endPoint(firstRoundWinner);
                 }
-
+                /* If there's no Winner in the FIRST round
+                   The Winner of this round wins the point */
+                else if((nextRoundWinner != null) && firstRoundWinner == null){
+                    endPoint(nextRoundWinner);
+                }
                 /* Check if some player's has won this point by
                    winning two rounds in a row */
-                if (nextRoundWinner.getRoundScore() == GameController.EARLY_WIN_ROUND_SCORE) {
-                    endPoint(nextRoundWinner);
+                else if(nextRoundWinner != null) {
+                    if (nextRoundWinner.getRoundScore() == GameController.EARLY_WIN_ROUND_SCORE) {
+                        endPoint(nextRoundWinner);
+                    }
                 }
             }
 
@@ -121,6 +117,9 @@ public class Point {
      * @return {List<Player>}
      */
     private List<Player> orderPlayers(List<Player> players, Player firstPlayer) {
+        if (firstPlayer == null)
+            return players;
+
         List<Player> newPlayers = new ArrayList<>();
         newPlayers.add(firstPlayer);
 

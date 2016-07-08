@@ -1,8 +1,6 @@
 package beans;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Class to represent a player's hand.
@@ -46,8 +44,7 @@ public class Hand {
      * @return {Card}
      */
     public Card drawNextCard() {
-        ListIterator<Card> it = this.cards.listIterator();
-        return it.hasNext() ? it.next() : null;
+        return this.cards.remove(0);
     }
 
     /**
