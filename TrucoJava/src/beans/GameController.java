@@ -32,6 +32,20 @@ public class GameController {
         this.initGameLoop();
     }
 
+    public void resetGame() {
+        this.setEnded(false);
+        this.setWinner(null);
+        this.players.clear();
+
+        this.view.gamePanel.scorePanel.setPlayer1RoundScore(0);
+        this.view.gamePanel.scorePanel.setPlayer2RoundScore(0);
+        this.view.gamePanel.scorePanel.setPlayer1GameScore(0);
+        this.view.gamePanel.scorePanel.setPlayer2GameScore(0);
+
+        this.deck = new Deck();
+        this.initGame();
+    }
+
     /**
      * Get the reference to the view layer
      * @return {MainView}
@@ -66,7 +80,7 @@ public class GameController {
 
             // Check if the game has ended
             Player pointWinner = point.getWinner();
-            if (pointWinner.getGameScore() == WIN_GAME_SCORE) {
+            if (pointWinner != null && pointWinner.getGameScore() == WIN_GAME_SCORE) {
                 this.setWinner(pointWinner);
                 this.setEnded(true);
             } else {

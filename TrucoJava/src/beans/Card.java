@@ -7,7 +7,8 @@ package beans;
  * @author lucas Pinheiro @lucaspin
  */
 public class Card implements Comparable<Card> {
-    static final String IMAGE_BASE_URI = "/resources/sprites/cards/";
+    public static final String BACK_CARD_IMAGE_SOURCE = "/resources/cardBack_red3.png";
+    static final String IMAGE_BASE_URI = "/resources/";
 
     private Suit suit;
     private Rank rank;
@@ -24,7 +25,7 @@ public class Card implements Comparable<Card> {
         setSuit(_suit);
         setRank(_rank);
         setManilha(_manilha);
-        this.setImageSource(IMAGE_BASE_URI + _rank.getValue() + _suit.getValue() + ".png");
+        this.setImageSource(IMAGE_BASE_URI + this.toString() + ".png");
     }
 
     /**

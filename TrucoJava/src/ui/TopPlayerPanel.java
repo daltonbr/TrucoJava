@@ -37,15 +37,7 @@ public class TopPlayerPanel extends JPanel {
         this.removeOldCardsFromPanel();
 
         for (beans.Card card : cards) {
-            JButton newCardButton = new JButton();
-            newCardButton.setText(card.toString());
-            newCardButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    // TODO: choose card clicked
-                }
-            });
-
+            CardButton newCardButton = new CardButton(card, true);
             this.cards.add(newCardButton);
         }
 

@@ -76,10 +76,8 @@ public class Point {
                 }
                 /* Check if some player's has won this point by
                    winning two rounds in a row */
-                else if(nextRoundWinner != null) {
-                    if (nextRoundWinner.getRoundScore() == GameController.EARLY_WIN_ROUND_SCORE) {
-                        endPoint(nextRoundWinner);
-                    }
+                else if (nextRoundWinner != null && nextRoundWinner.getRoundScore() == GameController.EARLY_WIN_ROUND_SCORE) {
+                    endPoint(nextRoundWinner);
                 }
             }
 
@@ -121,12 +119,17 @@ public class Point {
             return players;
 
         List<Player> newPlayers = new ArrayList<>();
-        newPlayers.add(firstPlayer);
 
-        for (Player player : players) {
-            if (!player.getName().equals(firstPlayer.getName())) {
-                newPlayers.add(player);
+        if (firstPlayer != null) {
+            newPlayers.add(firstPlayer);
+
+            for (Player player : players) {
+                if (!player.getName().equals(firstPlayer.getName())) {
+                    newPlayers.add(player);
+                }
             }
+        } else {
+            newPlayers = players;
         }
 
         return newPlayers;

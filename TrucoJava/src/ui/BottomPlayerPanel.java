@@ -40,7 +40,7 @@ public class BottomPlayerPanel extends JPanel {
         this.removeOldCardsFromPanel();
 
         for (beans.Card card : cards) {
-            CardButton newCardButton = new CardButton(card.toString());
+            CardButton newCardButton = new CardButton(card, false);
             newCardButton.setRank(card.getRank());
             newCardButton.setSuit(card.getSuit());
             newCardButton.setManilha(card.isManilha());
