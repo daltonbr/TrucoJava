@@ -1,5 +1,7 @@
 package rc.unesp.br.controllers;
 
+import rc.unesp.br.DAO.GameWinnerRepository;
+import rc.unesp.br.DAO.IGameWinnerRepository;
 import rc.unesp.br.beans.*;
 import rc.unesp.br.ui.MainView;
 
@@ -65,6 +67,8 @@ public class GameController {
     }
 
     private void initGameLoop() {
+        Player pointWinner = null;
+
         while (!this.isEnded()) {
             // Instantiate a 'Turned Card' or 'Vira' (in Portuguese)
             turnedCard = this.deck.drawRandomCard();
@@ -93,7 +97,7 @@ public class GameController {
             point.initPoint(this.players);
 
             // Check if the game has ended
-            Player pointWinner = point.getWinner();
+            pointWinner = point.getWinner();
             if (pointWinner != null && pointWinner.getGameScore() == WIN_GAME_SCORE) {
                 this.setWinner(pointWinner);
                 this.setEnded(true);
@@ -102,6 +106,9 @@ public class GameController {
                 this.resetPlayersRoundScore();
             }
         }
+
+        IGameWinnerRepository iGameWinnerRepository = new GameWinnerRepository();
+        iGameWinnerRepository.insertGameWinner(pointWinner);
     }
 
     /**
