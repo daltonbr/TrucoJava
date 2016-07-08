@@ -14,7 +14,7 @@ public class MySQLConnection {
 
 
     /**
-     * Returns de Connection to the DataBase
+     * Returns the Connection to the DataBase
      */
     public static Connection getConnection(){
         Connection connection = null;
@@ -30,7 +30,7 @@ public class MySQLConnection {
         String urlBD = "jdbc:mysql://localhost/bd_truco";
 
         try {
-            //This is used for dinamacally load the Driver (MySQL)
+            //This is used for dynamically load the Driver (MySQL)
             Class.forName("com.mysql.jdbc.Driver");
 
             //Try to connect to the BD
