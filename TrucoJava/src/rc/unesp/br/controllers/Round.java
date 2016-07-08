@@ -34,6 +34,8 @@ public class Round {
         while (!this.isEnded()) {
             for (Player aPlayersInOrder : this.playersInOrder) {
                 aPlayersInOrder.chooseCard();
+                this.view.setLastChosenCardOnMiddlePanel(aPlayersInOrder.getCurrentChosenCard());
+                this.waitToSeeCard(1000);
             }
 
             // Compare the chosen cards
@@ -65,6 +67,17 @@ public class Round {
 
             this.setWinner(winnerPlayer);
             this.setEnded(true);
+        }
+        this.view.setLastChosenCardOnMiddlePanel(Card.getFacedDownCard());
+        this.waitToSeeCard(100);
+    }
+
+    public void waitToSeeCard(int timeout) {
+        // Just to see the card played
+        try {
+            Thread.sleep(timeout);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 

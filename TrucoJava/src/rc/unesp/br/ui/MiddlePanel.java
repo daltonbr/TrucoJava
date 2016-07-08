@@ -20,6 +20,8 @@ public class MiddlePanel extends JPanel {
     private GameController controller;
     private Color backgroundColor = new Color(0, 120, 0);
 
+    private CardButton lastChosenCard;
+    private CardButton turnedCard;
 
     /**
      * Constructor of the class
@@ -34,41 +36,48 @@ public class MiddlePanel extends JPanel {
         this.setBackground(backgroundColor);
     }
 
-    public void setCards(List<Card> cards) {
+    public void updateLastChosenCard(Card lastChosenCard) {
+        CardButton newCardButton = new CardButton(lastChosenCard, false);
+        newCardButton.setRank(lastChosenCard.getRank());
+        newCardButton.setSuit(lastChosenCard.getSuit());
+        newCardButton.setManilha(lastChosenCard.isManilha());
+
         this.removeOldCardsFromPanel();
-
-        for (Card card : cards) {
-            CardButton newCardButton = new CardButton(card, false);
-            newCardButton.setRank(card.getRank());
-            newCardButton.setSuit(card.getSuit());
-            newCardButton.setManilha(card.isManilha());
-
-//            newCardButton.addActionListener(e -> {
-//                CardButton cardButtonClicked = (CardButton) e.getSource();
-//                cardButtonClicked.setEnabled(false);
-//                this.controller.setChosenCardForHumanPlayer(cardButtonClicked.getSuit(),
-//                        cardButtonClicked.getRank(),
-//                        cardButtonClicked.isManilha());
-//            });
-
-            this.cards.add(newCardButton);
-        }
-
+        this.lastChosenCard = newCardButton;
         this.addNewCardsToPanel();
     }
 
+    public void updateTurnedCard(Card card) {
+        CardButton newCardButton = new CardButton(card, false);
+        newCardButton.setRank(card.getRank());
+        newCardButton.setSuit(card.getSuit());
+        newCardButton.setManilha(card.isManilha());
+
+        this.removeOldCardsFromPanel();
+        this.turnedCard = newCardButton;
+        this.addNewCardsToPanel();
+    }
 
     private void removeOldCardsFromPanel() {
-        for (JButton buttonCard : this.cards) {
-            this.remove(buttonCard);
+        if (this.turnedCard != null) {
+            this.remove(this.turnedCard);
         }
 
-        this.cards.clear();
+        if (this.lastChosenCard != null) {
+            this.remove(this.lastChosenCard);
+        }
     }
 
     private void addNewCardsToPanel() {
-        for (JButton cardButton : this.cards) {
-            this.add(cardButton);
+        if (this.turnedCard != null) {
+            this.add(this.turnedCard);
         }
+
+        if (this.lastChosenCard != null) {
+            this.add(this.lastChosenCard);
+        }
+
+        this.revalidate();
+        this.repaint();
     }
 }

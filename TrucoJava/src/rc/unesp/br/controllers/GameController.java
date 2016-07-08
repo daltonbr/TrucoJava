@@ -76,12 +76,10 @@ public class GameController {
         while (!this.isEnded()) {
             // Instantiate a 'Turned Card' or 'Vira' (in Portuguese)
             turnedCard = this.deck.drawRandomCard();
-            List<Card> middleCardList = new ArrayList<>();
-            middleCardList.add(turnedCard);
-            middleCardList.add(faceDownCard);
-            this.view.setCardsOnMiddlePanel(middleCardList);
-            System.out.println("Turned Card: " + turnedCard.getRank());
-            //System.out.println("Trump Cards will be: " + turnedCard.getRank().getNext());
+
+            this.view.setTurnedCardOnMiddlePanel(turnedCard);
+            this.view.setLastChosenCardOnMiddlePanel(Card.getFacedDownCard());
+
             // Set the player's hand
             Hand hand = null;
             for (Player player : this.players) {

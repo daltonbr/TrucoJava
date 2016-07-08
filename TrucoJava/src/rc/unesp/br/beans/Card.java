@@ -128,6 +128,12 @@ public class Card implements Comparable<Card> {
         return (this.getRank().compareTo(_anotherCard.getRank()) > 0);
     }
 
+    static public Card getFacedDownCard() {
+        Card card = new Card(Rank.Ace, Suit.CLUBS, false);
+        card.setBackCardImageSource();
+        return card;
+    }
+
     @Override
     public boolean equals(Object obj){
         if (obj == null) {
