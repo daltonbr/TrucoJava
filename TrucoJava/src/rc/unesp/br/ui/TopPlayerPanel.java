@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class TopPlayerPanel extends JPanel {
     private List<JButton> cards = new ArrayList<>();
+    private Color backgroundColor = new Color(0, 120, 0);
 
     /**
      * Constructor of the class
@@ -53,6 +54,6 @@ public class TopPlayerPanel extends JPanel {
     private void setInitialOpts() {
         this.setLayout(new GridBagLayout());
         this.setPreferredSize(new Dimension(GamePanel.DEFAULT_PANEL_WIDTH, GamePanel.DEFAULT_PANEL_HEIGHT));
-        this.setBackground(Color.BLACK);
+        this.setBackground(backgroundColor);
     }
 }

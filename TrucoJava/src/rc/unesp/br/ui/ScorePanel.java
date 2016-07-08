@@ -14,6 +14,7 @@ public class ScorePanel extends JPanel {
     private JLabel player2GameScore = new JLabel();
     private JLabel player1RoundScore = new JLabel();
     private JLabel player2RoundScore = new JLabel();
+    private Color backgroundColor = new Color(255, 255, 255);
 
     /**
      * Constructor of the class
@@ -82,6 +83,6 @@ public class ScorePanel extends JPanel {
     private void setInitialOpts() {
         this.setLayout(new GridBagLayout());
         this.setPreferredSize(new Dimension(GamePanel.DEFAULT_PANEL_WIDTH, GamePanel.DEFAULT_PANEL_HEIGHT));
-        this.setBackground(Color.WHITE);
+        this.setBackground(backgroundColor);
     }
 }
