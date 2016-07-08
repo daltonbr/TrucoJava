@@ -72,8 +72,11 @@ public class GameController {
         while (!this.isEnded()) {
             // Instantiate a 'Turned Card' or 'Vira' (in Portuguese)
             turnedCard = this.deck.drawRandomCard();
-            //System.out.println("Turned Card: " + vira.getRank());
-            //System.out.println("Trump Cards will be: " + vira.getRank().getNext());
+            List<Card> middleCardList = new ArrayList<>();
+            middleCardList.add(turnedCard);
+            this.view.setCardsOnMiddlePanel(middleCardList);
+            System.out.println("Turned Card: " + turnedCard.getRank());
+            //System.out.println("Trump Cards will be: " + turnedCard.getRank().getNext());
             // Set the player's hand
             Hand hand = null;
             for (Player player : this.players) {
@@ -90,6 +93,7 @@ public class GameController {
             // TODO: check this
             this.view.setCardsOnTopPanel(this.players.get(0).getHand().getCards());
             this.view.setCardsOnBottomPanel(this.players.get(1).getHand().getCards());
+
 
             // Instantiate a new point
             Point point = new Point(this.players);

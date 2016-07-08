@@ -60,4 +60,9 @@ public class MainView extends JFrame {
     public void setBottomPanelController(GameController controller) {
         this.gamePanel.bottomPlayerPanel.setController(controller);
     }
+
+    public void setCardsOnMiddlePanel(List<Card> cards) {
+        this.gamePanel.middlePanel.setCards(cards);
+
+    }
 }

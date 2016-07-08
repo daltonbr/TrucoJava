@@ -12,6 +12,7 @@ import java.awt.*;
 public class ButtonPanel extends JPanel {
     private JButton callTruco;
     private JButton foldButton;
+    private Color backgroundColor = new Color(32, 120, 85);
 
     /**
      * Constructor of the class
@@ -25,7 +26,7 @@ public class ButtonPanel extends JPanel {
 
     private void setInitialOpts() {
         this.setPreferredSize(new Dimension(GamePanel.DEFAULT_PANEL_WIDTH, GamePanel.DEFAULT_PANEL_HEIGHT));
-        this.setBackground(Color.BLUE);
+        this.setBackground(backgroundColor);
     }
 
     /**
