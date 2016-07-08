@@ -1,5 +1,6 @@
 package ui;
 
+import beans.Card;
 import beans.Rank;
 import beans.Suit;
 
@@ -19,13 +20,23 @@ public class CardButton extends JButton {
 
     /**
      * Constructor of the class
-     * @param name {String}
+     * @param card {String}
+     * @param faceDown {Boolean}
      */
-    CardButton(String name) {
-        super(name);
+    CardButton(Card card, boolean faceDown) {
+        super(card.toString());
         this.setFocusable(false);
         try {
-            Image cardImage = ImageIO.read(getClass().getResource("/resources/" + name + ".png"));
+
+            String source;
+
+            if (!faceDown) {
+                source = card.getImageSource();
+            } else {
+                source = Card.BACK_CARD_IMAGE_SOURCE;
+            }
+
+            Image cardImage = ImageIO.read(getClass().getResource(source));
             Image scaledImage = cardImage.getScaledInstance(70, 100, Image.SCALE_SMOOTH);
             super.setIcon(new ImageIcon(scaledImage));
         } catch (IOException ioe) {
