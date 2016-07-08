@@ -1,5 +1,5 @@
-import beans.*;
-import ui.MainView;
+import rc.unesp.br.controllers.GameController;
+import rc.unesp.br.ui.MainView;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
